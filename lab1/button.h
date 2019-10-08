@@ -10,7 +10,6 @@ public:
         pin = _pin;
         state = LOW;
         debounceState = LOW;
-
         pinMode(pin, INPUT_PULLUP);
     }
 
