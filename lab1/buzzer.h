@@ -1,6 +1,6 @@
 #pragma once
 
-#define BUZZER_NOTE_DURATION 100
+#define BUZZER_NOTE_DURATION 10
 
 class Buzzer
 {
@@ -13,7 +13,12 @@ public:
 
     void playNote(int note)
     {
-        tone(pin, note, BUZZER_NOTE_DURATION);
+       tone(pin, note, BUZZER_NOTE_DURATION);
+    }
+
+    void stopPlay()
+    {
+        noTone(pin);
     }
 
 private:

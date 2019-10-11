@@ -14,6 +14,7 @@
 
 int notes[] = {NOTE_C3, NOTE_D3, NOTE_E3, NOTE_F3, NOTE_G3, NOTE_A3, NOTE_B3, NOTE_C4};
 int notesCount = 8;
+bool buttonPressed = false;
 
 Button button1(PIN_BUTTON_1);
 Button button2(PIN_BUTTON_2);
@@ -33,11 +34,18 @@ void setup()
 }
 
 void loop() {
+    buttonPressed = false;
     for (int i = 0; i < notesCount; i++)
     { 
-      if (buttons[i].wasPressed())
-      {
-        buzzer.playNote(notes[i]);
-      }
+        if (buttons[i].pressed())
+        {
+            buttonPressed = true;
+            buzzer.playNote(notes[i]);
+            break;
+        }
+    }
+    if (!buttonPressed)
+    {
+      buzzer.stopPlay();
     }
 }
